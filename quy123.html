@@ -1,56 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiểm Tra Thiết Kế Trang Web</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-    <header>
-        <h1>Kiểm Tra - Thiết Kế Trang Web</h1>
-        <nav>
-            <ul class="menu">
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="#">Giới thiệu</a></li>
-                <li>
-                    <a href="#">Sản phẩm</a>
-                    <ul class="submenu">
-                        <li><a href="#">Giày Nam</a></li>
-                        <li><a href="#">Giày Nữ</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Hỏi đáp</a></li>
-                <li><a href="#">Liên hệ</a></li>
-            </ul>
-        </nav>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đặt Tour Du Lịch</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    <header class="bg-primary text-white text-center py-3">
+      <h1>Website Đặt Tour Du Lịch</h1>
     </header>
 
-    <section class="content">
-        <h2>Chuyển động ảnh từ phải qua trái</h2>
-        <div class="image-slider">
-            <img src="\Users\hoang\OneDrive\Máy tính\ảnh giày 1.jpg" alt="Image 3">
-            <img src="\Users\hoang\OneDrive\Máy tính\ảnh giày 3.jpg" alt="Image 2">
-            <img src="\Users\hoang\OneDrive\Máy tính\ảnh giày 2.jpg" alt="Image 1">
-            
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="#">Trang Chủ</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#">Tour</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Liên Hệ</a></li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </nav>
 
-    <section class="feedback">
-        <h2>Góp Ý</h2>
-        <form>
-            <input type="text" placeholder="Some text">
-            <input type="text" placeholder="Upcoming Events">
-            <input type="text" placeholder="Visit Our Blog">
-            <button type="submit">Gửi ý kiến</button>
-        </form>
-    </section>
+    <div class="container mt-4">
+      <h2 class="text-center">Danh Sách Tour</h2>
+      <div class="row" id="tour-list">
+        <!-- Các tour sẽ được load từ API giả lập -->
+      </div>
+    </div>
 
-    <footer>
-        <p>&copy; 2024 by Dai Nam University | http://dainam.edu.vn</p>
-    </footer>
+    <!-- Modal Đặt Tour -->
+    <div
+      class="modal fade"
+      id="bookingModal"
+      tabindex="-1"
+      aria-labelledby="bookingModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bookingModalLabel">Đặt Tour</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="bookingForm">
+              <div class="mb-3">
+                <label for="name" class="form-label">Họ và Tên</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Số Điện Thoại</label>
+                <input type="text" class="form-control" id="phone" required />
+              </div>
+              <input type="hidden" id="selectedTourId" />
+              <button type="submit" class="btn btn-primary">
+                Xác Nhận Đặt Tour
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="script.js"></script>
-</body>
+    <script src="scripts.js"></script>
+  </body>
 </html>
